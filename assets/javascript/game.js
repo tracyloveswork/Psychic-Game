@@ -1,3 +1,5 @@
+window.onload = function(){
+
 // Declare variables
 			var win = 0;
 			var lose = 0;
@@ -7,11 +9,8 @@
 
 		// Populate starting score
 
-		document.getElementById("wins").innerHTML = win;
-		document.getElementById("losses").innerHTML = lose;
-
-			// wins.textContent = win;
-			// losses.textContent = lose;
+			wins.textContent = win;
+			losses.textContent = lose;
 
 		// Reset variables and write variables in span tags id's
 
@@ -110,3 +109,5 @@
 
 						}
 				}
+
+};

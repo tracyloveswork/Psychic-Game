@@ -3,138 +3,48 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>The Psychic Game</title>
-		<link href="assets/css/style.css" type="text/css">
-		<!-- <script src="assets/javascript/game.js" type="text/javascript"></script> -->
+		<link href="https://fonts.googleapis.com/css?family=Kumar+One|Raleway" rel="stylesheet">
+		<link href="assets/css/style.css" type="text/css" rel="stylesheet">
+		<script type="text/javascript" src="assets/javascript/game.js" ></script>
 	</head>
 	
 	<body>
 
-		<h1>The Psychic Game</h1>
+		<!-- If CSS3 is not supported -->
 
-		<p>Guess what letter I am thinking of...</p>
+		<canvas id="myCanvas" width="640">The Psychic Game</canvas>
 
-		<ul>			
-			<li>Wins: <span id= "wins"> </span></li>
-			<li>Losses: <span id= "losses"> </span></li>
-			<li>Guess you have left: <span id="turns"> </span></li>			
-			<li>Guesses so far: <span id= "guesses"> </span></li>
-		</ul>
+		<!-- Create gradient headline -->
 
-		<script type="text/javascript">
-					
-		// Declare variables
-			var win = 0;
-			var lose = 0;
-			var turn = 9;
-			var guessList = " ";
-			var userKey;
+		<script>
 
-		// Populate starting score
+			var c = document.getElementById("myCanvas");
+			var ctx = c.getContext("2d");
 
-		document.getElementById("wins").innerHTML = win;
-
-			// wins.textContent = win;
-			losses.textContent = lose;
-
-		// Reset variables and write variables in span tags id's
-
-			function resetVariables() {
-				turn = 9;
-				guessList = " ";
-				guesses.textContent = guessList;
-				turns.textContent = turn;
-			}
-
-		resetVariables();
-		
-		// Generate a random letter for computer guess
-		
-			function randomGuess() {
-			var text;
-			var charset = "abcdefghijklmnopqrstuvwxyz";
-			text = charset.charAt(Math.floor(Math.random() * charset.length));
-			return text;
-			}
-
-			var computerGuess = randomGuess();
-
-			console.log(computerGuess);
-
-		// Check if key pressed is letter
-			function allLetter(inputtxt)  {
-				var letters = "abcdefghijklmnopqrstuvwxyz";
-				if (letters.indexOf(inputtxt) > 0) {
-					return true;
-					}
-					else
-					{
-					return false;
-					}
-				}
-
-		// get user guess and compare to computer guess
-
-			document.onkeyup = function(event) {
-
-				// Check if you have a turn left
-				if (turn > 0) {
-
-					var userKey = event.key;
-
-					userKey = userKey.toLowerCase();
-
-					console.log(allLetter(userKey));
-
-					// Test if it is a letter
-
-					if (allLetter(userKey)) {
-
-						turn--;
-
-						turns.textContent = turn;
-
-						console.log(userKey);
-						
-						guessList += (userKey + ", " );
-							
-						guesses.textContent = guessList;
-
-						if (userKey == computerGuess) {
-
-							alert("Correct. You must be Psychic.");
-
-							win++;
-
-							wins.textContent = win;
-
-							resetVariables();
-
-						} else {
-
-						alert("That was not the letter I am thinking of.")
-
-							}
-
-					} else {
-
-						alert("That is not a letter. Try again.");
-
-					}
-
-						} else {
-
-							lose++;
-
-							losses.textContent = lose;
-
-							resetVariables();
-
-							alert("No turns left.  You lose this round.");
-
-						}
-				}
+			ctx.font = "54px 'Kumar One'";
+			// Create gradient
+			var gradient = ctx.createLinearGradient(0, 0, c.width, 0);
+			gradient.addColorStop("0", "magenta");
+			gradient.addColorStop("0.5", "blue");
+			gradient.addColorStop("1.0", "red");
+			// Fill with gradient
+			ctx.fillStyle = gradient;
+			ctx.fillText("The Psychic Game", 10, 90);
 
 		</script>
+
+		<div id="indent">
+		
+			<p>Guess what letter I am thinking of...</p>
+
+			<ul>			
+				<li>Wins: <span id= "wins"> </span></li>
+				<li>Losses: <span id= "losses"> </span></li>
+				<li>Guess you have left: <span id="turns"> </span></li>			
+				<li>Guesses so far: <span id= "guesses"> </span></li>
+			</ul>
+
+		</div>
 
 	</body>
 </html>
