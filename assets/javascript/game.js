@@ -37,6 +37,7 @@ window.onload = function(){
 			console.log(computerGuess);
 
 		// Check if key pressed is letter
+
 			function allLetter(inputtxt)  {
 				var letters = "abcdefghijklmnopqrstuvwxyz";
 				if (letters.indexOf(inputtxt) >= 0) {
@@ -48,12 +49,12 @@ window.onload = function(){
 					}
 				}
 
-		// get user guess and compare to computer guess
+		// Get user guess and compare to computer guess
 
 			document.onkeyup = function(event) {
 
 				// Check if you have a turn left
-				
+
 				if (turn > 0) {
 
 					var userKey = event.key;
@@ -66,35 +67,44 @@ window.onload = function(){
 
 					if (allLetter(userKey)) {
 
-						turn--;
+						// Test to see if guess has already been made
 
-						turns.textContent = turn;
+						if (guessList.indexOf(userKey) == -1) {
 
-						console.log(userKey);
+								turn--;
 
-						// Add user guess to list on screen
-						
-						guessList += (userKey + ", " );
-							
-						guesses.textContent = guessList;
+								turns.textContent = turn;
 
-						// Compare answer
+								console.log(userKey);
 
-						if (userKey == computerGuess) {
+								// Add user guess to list on screen
+								
+								guessList += (userKey + ", " );
+									
+								guesses.textContent = guessList;
 
-							alert("Correct. You must be Psychic.");
+								// Compare answer
 
-							win++;
+								if (userKey == computerGuess) {
 
-							wins.textContent = win;
+									alert("Correct. You must be Psychic.");
 
-							resetVariables();
+									win++;
 
-						} else {
+									wins.textContent = win;
 
-						alert("That was not the letter I am thinking of.")
+									resetVariables();
 
-							}
+								} else {
+
+								alert("That was not the letter I am thinking of.")
+
+									}
+
+						}  else {
+
+							alert("You've already made that guess.");
+						}
 
 					} else {
 
