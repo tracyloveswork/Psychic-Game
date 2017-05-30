@@ -39,7 +39,7 @@ window.onload = function(){
 		// Check if key pressed is letter
 			function allLetter(inputtxt)  {
 				var letters = "abcdefghijklmnopqrstuvwxyz";
-				if (letters.indexOf(inputtxt) > 0) {
+				if (letters.indexOf(inputtxt) >= 0) {
 					return true;
 					}
 					else
@@ -53,6 +53,7 @@ window.onload = function(){
 			document.onkeyup = function(event) {
 
 				// Check if you have a turn left
+				
 				if (turn > 0) {
 
 					var userKey = event.key;
@@ -70,10 +71,14 @@ window.onload = function(){
 						turns.textContent = turn;
 
 						console.log(userKey);
+
+						// Add user guess to list on screen
 						
 						guessList += (userKey + ", " );
 							
 						guesses.textContent = guessList;
+
+						// Compare answer
 
 						if (userKey == computerGuess) {
 
