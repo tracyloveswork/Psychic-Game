@@ -6,6 +6,7 @@ window.onload = function(){
 			var turn = 9;
 			var guessList = " ";
 			var userKey;
+			var computerGuess;
 
 		// Populate starting score
 
@@ -19,6 +20,10 @@ window.onload = function(){
 				guessList = " ";
 				guesses.textContent = guessList;
 				turns.textContent = turn;
+				randomGuess();
+				computerGuess = randomGuess();
+				console.log(computerGuess);
+
 			}
 
 		resetVariables();
@@ -31,10 +36,6 @@ window.onload = function(){
 			text = charset.charAt(Math.floor(Math.random() * charset.length));
 			return text;
 			}
-
-			var computerGuess = randomGuess();
-
-			console.log(computerGuess);
 
 		// Check if key pressed is letter
 
